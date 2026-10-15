@@ -1,0 +1,259 @@
+.vc-gifTools-menu {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 12px;
+    padding-bottom: 16px;
+}
+
+.vc-gifTools-card {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 4px;
+    padding: 16px;
+    border: 1px solid var(--border-subtle);
+    border-radius: 8px;
+    background: var(--background-mod-subtle);
+    color: var(--text-default);
+    text-align: left;
+    cursor: pointer;
+    transition: background-color 0.1s ease-in-out, border-color 0.1s ease-in-out;
+}
+
+.vc-gifTools-card:hover {
+    border-color: var(--border-focus);
+    background: var(--background-mod-strong);
+}
+
+.vc-gifTools-card-icon {
+    font-size: 28px;
+}
+
+.vc-gifTools-card-name {
+    color: var(--text-strong);
+    font-size: 16px;
+    font-weight: 600;
+}
+
+.vc-gifTools-tool-wrapper {
+    padding-bottom: 16px;
+}
+
+.vc-gifTools-back {
+    margin-bottom: 12px;
+}
+
+.vc-gifTools-tool {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+}
+
+.vc-gifTools-row {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 8px;
+}
+
+.vc-gifTools-row-end {
+    flex-wrap: nowrap;
+    align-items: flex-end;
+}
+
+.vc-gifTools-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 8px;
+}
+
+.vc-gifTools-dropzone {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 10px;
+    padding: 20px;
+    border: 2px dashed var(--border-subtle);
+    border-radius: 8px;
+    text-align: center;
+}
+
+.vc-gifTools-dragging {
+    border-color: var(--border-focus);
+    background: var(--background-mod-subtle);
+}
+
+.vc-gifTools-dropzone-hint,
+.vc-gifTools-muted {
+    color: var(--text-muted);
+}
+
+.vc-gifTools-field {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+}
+
+.vc-gifTools-row-end > .vc-gifTools-field {
+    flex: 1;
+}
+
+.vc-gifTools-label {
+    color: var(--text-muted);
+    font-size: 12px;
+    font-weight: 600;
+    text-transform: uppercase;
+}
+
+.vc-gifTools-value {
+    color: var(--text-default);
+    font-size: 13px;
+}
+
+.vc-gifTools-range {
+    width: 100%;
+    accent-color: var(--brand-500, #5865f2);
+}
+
+.vc-gifTools-input {
+    box-sizing: border-box;
+    width: 100%;
+    padding: 8px 10px;
+    border: 1px solid var(--input-border-default, var(--border-subtle));
+    border-radius: 6px;
+    outline: none;
+    background: var(--input-background-default, var(--background-base-lowest));
+    color: var(--text-default);
+    font-size: 14px;
+}
+
+.vc-gifTools-input:focus {
+    border-color: var(--border-focus);
+}
+
+.vc-gifTools-chips {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 6px;
+}
+
+.vc-gifTools-chip {
+    padding: 4px 12px;
+    border: 1px solid var(--border-subtle);
+    border-radius: 999px;
+    background: var(--background-mod-subtle);
+    color: var(--text-default);
+    font-size: 13px;
+    cursor: pointer;
+}
+
+.vc-gifTools-chip:hover {
+    background: var(--background-mod-strong);
+}
+
+.vc-gifTools-selected {
+    border-color: var(--brand-500, #5865f2);
+    background: var(--brand-500, #5865f2);
+    color: #fff;
+}
+
+.vc-gifTools-selected:hover {
+    background: var(--brand-500, #5865f2);
+}
+
+.vc-gifTools-checkbox {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    color: var(--text-default);
+    font-size: 14px;
+    word-break: break-all;
+    cursor: pointer;
+}
+
+.vc-gifTools-progress {
+    overflow: hidden;
+    height: 8px;
+    border-radius: 4px;
+    background: var(--background-mod-strong);
+}
+
+.vc-gifTools-progress-bar {
+    height: 100%;
+    background: var(--brand-500, #5865f2);
+    transition: width 0.1s linear;
+}
+
+.vc-gifTools-result {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 8px;
+    padding: 12px;
+    border-radius: 8px;
+    background: var(--background-base-lower);
+}
+
+.vc-gifTools-preview {
+    max-width: 100%;
+    max-height: 320px;
+    border-radius: 4px;
+    background: repeating-conic-gradient(rgb(128 128 128 / 20%) 0 25%, transparent 0 50%) 0 0 / 16px 16px;
+}
+
+.vc-gifTools-notice {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 8px;
+    padding: 10px;
+    border-left: 3px solid var(--status-warning, #f0b232);
+    border-radius: 4px;
+    background: var(--background-mod-subtle);
+}
+
+.vc-gifTools-slides {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+}
+
+.vc-gifTools-slide {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+    width: 96px;
+}
+
+.vc-gifTools-slide img {
+    width: 96px;
+    height: 96px;
+    border-radius: 4px;
+    object-fit: cover;
+}
+
+.vc-gifTools-slide-buttons {
+    display: flex;
+    justify-content: space-between;
+}
+
+.vc-gifTools-slide-buttons button {
+    padding: 2px 6px;
+    border-radius: 4px;
+    background: var(--background-mod-subtle);
+    color: var(--text-default);
+    cursor: pointer;
+}
+
+.vc-gifTools-slide-buttons button:disabled {
+    opacity: 0.4;
+    cursor: default;
+}
+
+.vc-gifTools-broken-list {
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+    max-height: 200px;
+    overflow-y: auto;
+}
