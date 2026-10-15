@@ -14,7 +14,7 @@ import managedStyle from "./styles.css?managed";
 
 export default definePlugin({
     name: "GifTools",
-    description: "Adds a /gif command with GIF tools: turn pasted images into GIFs and save them to your favorites, add effects and text, convert videos, make slideshows and manage your favorite GIFs. Also available from the context menu of messages with images or videos",
+    description: "Adds a /giftools command with GIF tools: turn pasted images into GIFs and save them to your favorites, add effects and text, convert videos, make slideshows and manage your favorite GIFs. Also available from the context menu of messages with images or videos",
     tags: ["Media", "Commands"],
     authors: [{ name: "yoraudev", id: 0n }],
     settings,
@@ -26,7 +26,7 @@ export default definePlugin({
 
     commands: [{
         inputType: ApplicationCommandInputType.BUILT_IN,
-        name: "gif",
+        name: "giftools",
         description: "Open GIF Tools",
         execute() {
             openGifTools();

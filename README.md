@@ -1,6 +1,6 @@
 # GifTools
 
-A [Vencord](https://github.com/Vendicated/Vencord) userplugin that adds a set of GIF tools to Discord. Type `/gif` to open the tool menu: paste an image, turn it into a GIF and save it straight to your favorite GIFs, or make GIFs from videos and several images, and keep your favorites in order.
+A [Vencord](https://github.com/Vendicated/Vencord) userplugin that adds a set of GIF tools to Discord. Type `/giftools` to open the tool menu: paste an image, turn it into a GIF and save it straight to your favorite GIFs, or make GIFs from videos and several images, and keep your favorites in order.
 
 ## Tech stack
 
@@ -27,7 +27,7 @@ Discord only stores links in your favorite GIFs, so a GIF made with GifTools is 
 
 Clone this repository into `src/userplugins/gifTools` of a Vencord checkout, build Vencord and enable **GifTools** in the plugin settings.
 
-Set the **storage channel** in the plugin settings, or press **Use current channel** the first time you favorite a GIF. Then type `/gif` in any chat, or right click a message with an image or video and open the **GifTools** submenu.
+Set the **storage channel** in the plugin settings, or press **Use current channel** the first time you favorite a GIF. Then type `/giftools` in any chat, or right click a message with an image or video and open the **GifTools** submenu.
 
 Other settings: the default GIF size and frame delay, the maximum file size (bigger GIFs are shrunk automatically), and an option to turn pasted images into favorites right away.
 
