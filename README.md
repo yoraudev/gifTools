@@ -23,6 +23,8 @@ A [Vencord](https://github.com/Vendicated/Vencord) userplugin that adds a set of
 
 Discord only stores links in your favorite GIFs, so a GIF made with GifTools is first uploaded to a channel you choose, and the link of that upload is added to your favorites. Use a channel only you can see, such as one in your own private server.
 
+Discord sends a favorite GIF as a link, and shows links in chat at most 400×300, smaller than the 550×350 it allows for files. So when you pick a GIF made with GifTools in the GIF picker, it is sent as a file instead and shows as big as the original image. This can be turned off in the plugin settings.
+
 ## Usage
 
 Clone this repository into `src/userplugins/gifTools` of a Vencord checkout, build Vencord and enable **GifTools** in the plugin settings.

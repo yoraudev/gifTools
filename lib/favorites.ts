@@ -140,7 +140,8 @@ export function checkStorageChannel(channelId = settings.store.storageChannelId)
     return null;
 }
 
-export function uploadFile(file: File, channelId: string) {
+/** Uploads a file and sends it as a message. `extra` is merged into the message body, e.g. for a reply */
+export function uploadFile(file: File, channelId: string, extra: Record<string, unknown> = {}) {
     return new Promise<Attachment>((resolve, reject) => {
         const upload = new CloudUpload({
             file,
@@ -162,7 +163,8 @@ export function uploadFile(file: File, channelId: string) {
                             id: "0",
                             filename: upload.filename,
                             uploaded_filename: upload.uploadedFilename
-                        }]
+                        }],
+                        ...extra
                     }
                 });
 

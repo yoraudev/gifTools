@@ -28,6 +28,11 @@ export const settings = definePluginSettings({
         description: "Maximum GIF size in MB. Bigger GIFs are shrunk automatically",
         default: 10
     },
+    sendAsFile: {
+        type: OptionType.BOOLEAN,
+        description: "When you pick a GIF made with GifTools in the GIF picker, send it as a file instead of a link, so it shows as big as the original image (Discord shows links at most 400×300)",
+        default: true
+    },
     autoFavoriteOnPaste: {
         type: OptionType.BOOLEAN,
         description: "Pasting an image into the Image to GIF tool immediately turns it into a GIF and adds it to your favorites",

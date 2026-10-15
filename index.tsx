@@ -9,6 +9,7 @@ import definePlugin from "@utils/types";
 
 import { messageContextMenuPatch } from "./contextMenu";
 import { openGifTools } from "./GifToolsModal";
+import { sendFavoriteAsFile } from "./lib/send";
 import { settings } from "./settings";
 import managedStyle from "./styles.css?managed";
 
@@ -19,6 +20,24 @@ export default definePlugin({
     authors: [{ name: "yoraudev", id: 0n }],
     settings,
     managedStyle,
+
+    patches: [{
+        // GIF picker: send GIFs made with GifTools as a file, the same way GifPaste tells the chat picker apart
+        find: "handleSelectGIF=",
+        replacement: {
+            match: /handleSelectGIF=\((\i),(\i)\)=>\{/,
+            replace: "$&if(!this?.props?.className&&$self.sendAsFile($1,()=>this.props.onSelectGIF?.($1,$2)))return;"
+        }
+    }],
+
+    sendAsFile(gif: { url: string; src: string; } | undefined, fallback: () => void) {
+        try {
+            return sendFavoriteAsFile(gif, fallback);
+        } catch (e) {
+            console.error("[GifTools] Failed to send GIF as a file", e);
+            return false;
+        }
+    },
 
     contextMenus: {
         "message": messageContextMenuPatch
