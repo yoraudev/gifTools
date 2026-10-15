@@ -2,6 +2,33 @@
 
 A [Vencord](https://github.com/Vendicated/Vencord) userplugin that adds a set of GIF tools to Discord. Type `/giftools` to open the tool menu: paste an image, turn it into a GIF and save it straight to your favorite GIFs, or make GIFs from videos and several images, and keep your favorites in order.
 
+<p align="center">
+  <img src="screenshots/menu.png" alt="The GIF Tools menu with the Image to GIF, Video to GIF, Slideshow and Favorites tools" width="440">
+</p>
+
+<table>
+  <tr>
+    <td align="center" valign="top" width="50%">
+      <img src="screenshots/image-to-gif.png" alt="Image to GIF with effects, top and bottom text and size">
+      <br><b>Image to GIF</b><br>Effects, captions and size, then save it to your favorites
+    </td>
+    <td align="center" valign="top" width="50%">
+      <img src="screenshots/favorites.png" alt="Favorites with add from link, backup and clean up">
+      <br><b>Favorites</b><br>Add from a link, back up, import and clean up
+    </td>
+  </tr>
+  <tr>
+    <td align="center" valign="top" width="50%">
+      <img src="screenshots/video-to-gif.png" alt="Video to GIF">
+      <br><b>Video to GIF</b><br>Turn a part of a video into a GIF
+    </td>
+    <td align="center" valign="top" width="50%">
+      <img src="screenshots/slideshow.png" alt="Slideshow with time per slide, size and fade">
+      <br><b>Slideshow</b><br>Combine several images into one GIF
+    </td>
+  </tr>
+</table>
+
 ## Tech stack
 
 - TypeScript and React, built with Vencord's esbuild setup
@@ -17,7 +44,6 @@ A [Vencord](https://github.com/Vendicated/Vencord) userplugin that adds a set of
 - **Slideshow** – combine several images into one GIF, with an optional fade between them.
 - **Favorites** – add GIFs from a link, back up your favorites to a file and import them again, and find favorites that don't load anymore. Expired Discord links are refreshed instead of removed.
 - **Message context menu** – right click a message with an image or video to turn it into a GIF, open it in the editor with an effect, or make a slideshow from all of its images.
-- **Works with PinFavoriteGifs** – GIFs pinned with it are never removed and keep their pins.
 
 ## How favoriting works
 

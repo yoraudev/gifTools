@@ -202,7 +202,7 @@ function Cleanup({ onChanged }: { onChanged(): void; }) {
     return (
         <>
             <Paragraph className={cl("muted")}>
-                Checks every favorite and finds the ones that don't load anymore. GIFs pinned with PinFavoriteGifs are skipped and never removed.
+                Checks every favorite and finds the ones that don't load anymore.
             </Paragraph>
             <Button size="small" variant="secondary" disabled={progress != null} onClick={scan}>
                 {progress != null ? "Scanning..." : "Scan favorites"}
@@ -247,13 +247,12 @@ export function Favorites() {
     const refresh = () => setVersion(v => v + 1);
 
     const total = Object.keys(getFavorites()).length;
-    const pinned = getPinnedUrls().size;
     const created = settings.store.created.length;
 
     return (
         <div className={cl("tool")}>
             <Paragraph>
-                {total} favorite GIFs · {pinned} pinned · {created} created with GifTools
+                {total} favorite GIFs · {created} created with GifTools
             </Paragraph>
 
             <Heading tag="h5">Add from link</Heading>
