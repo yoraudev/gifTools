@@ -13,10 +13,10 @@ export const settings = definePluginSettings({
         description: "ID of the channel GIFs are uploaded to before they are added to your favorites (e.g. a channel in your own private server)",
         default: ""
     },
-    defaultSize: {
+    gifSize: {
         type: OptionType.NUMBER,
-        description: "Default size of the longest side of created GIFs, in pixels",
-        default: 256
+        description: "Default size of the longest side of created GIFs, in pixels. 0 keeps the original size (up to 1024px)",
+        default: 0
     },
     defaultDelay: {
         type: OptionType.NUMBER,

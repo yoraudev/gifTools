@@ -29,7 +29,7 @@ Clone this repository into `src/userplugins/gifTools` of a Vencord checkout, bui
 
 Set the **storage channel** in the plugin settings, or press **Use current channel** the first time you favorite a GIF. Then type `/giftools` in any chat, or right click a message with an image or video and open the **GifTools** submenu.
 
-Other settings: the default GIF size and frame delay, the maximum file size (bigger GIFs are shrunk automatically), and an option to turn pasted images into favorites right away.
+Other settings: the default GIF size (the original size by default, up to 1024px) and frame delay, the maximum file size (bigger GIFs are shrunk automatically), and an option to turn pasted images into favorites right away.
 
 ## License
 

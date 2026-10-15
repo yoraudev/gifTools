@@ -21,6 +21,10 @@ export function gifFileName(name: string) {
     return `${name.replace(/\.[^.]+$/, "")}.gif`;
 }
 
+export function sizeLabel(size: number) {
+    return size > 0 ? `${size}px` : "Original";
+}
+
 export function errorMessage(e: unknown) {
     return e instanceof Error ? e.message : String(e);
 }

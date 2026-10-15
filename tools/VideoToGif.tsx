@@ -13,7 +13,7 @@ import { MediaInput, Progress, Range, TextField } from "../components/Inputs";
 import { Captions, drawCaptions, hasCaptions } from "../lib/caption";
 import { fitSize, MAX_FRAMES } from "../lib/decode";
 import { settings } from "../settings";
-import { cl, errorMessage, gifFileName, ToolProps } from "../utils";
+import { cl, errorMessage, gifFileName, sizeLabel, ToolProps } from "../utils";
 
 function waitFor(video: HTMLVideoElement, event: string) {
     return new Promise<void>((resolve, reject) => {
@@ -55,7 +55,7 @@ export function VideoToGif({ onClose, initialFiles }: ToolProps) {
     const [start, setStart] = useState(0);
     const [end, setEnd] = useState(0);
     const [fps, setFps] = useState(15);
-    const [size, setSize] = useState(settings.store.defaultSize);
+    const [size, setSize] = useState(settings.store.gifSize);
     const [speed, setSpeed] = useState(1);
     const [captions, setCaptions] = useState<Captions>({ top: "", bottom: "" });
     const [extracting, setExtracting] = useState<number | null>(null);
@@ -72,7 +72,7 @@ export function VideoToGif({ onClose, initialFiles }: ToolProps) {
     const create = async () => {
         if (!url) return;
 
-        const { width, height } = fitSize(meta.width, meta.height, size);
+        const { width, height } = fitSize(meta.width, meta.height, size, frameCount);
         let frames: ImageBitmap[] = [];
         try {
             setExtracting(0);
@@ -130,7 +130,7 @@ export function VideoToGif({ onClose, initialFiles }: ToolProps) {
                     }} />
                     <Range label="End" value={end} min={0} max={meta.duration} step={0.1} format={formatTime} onChange={v => setEnd(Math.max(v, start + 0.1))} />
                     <Range label="FPS" value={fps} min={5} max={30} onChange={setFps} />
-                    <Range label="Size" value={size} min={64} max={512} step={16} suffix="px" onChange={setSize} />
+                    <Range label="Size" value={size} min={0} max={1024} step={32} format={sizeLabel} onChange={setSize} />
                     <Range label="Speed" value={speed} min={0.25} max={4} step={0.25} suffix="×" onChange={setSpeed} />
 
                     <div className={cl("grid")}>

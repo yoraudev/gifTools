@@ -64,9 +64,23 @@ export function closeSource(source: Source | null | undefined) {
     source?.frames.forEach(f => f.image.close());
 }
 
-/** Scales width and height so the longest side is `size` */
-export function fitSize(width: number, height: number, size: number) {
-    const scale = size / Math.max(width, height);
+/** Longest side used when keeping the original size. Discord shows images in chat at most around 550px wide */
+export const MAX_SIDE = 1024;
+/** Pixels of all frames together, keeps memory use and encoding time in check */
+const PIXEL_BUDGET = 30_000_000;
+
+/**
+ * Scales width and height so the longest side is `size`, or keeps the original size (up to MAX_SIDE) if `size` is 0.
+ * Animations with many frames are scaled down further to stay within the pixel budget.
+ */
+export function fitSize(width: number, height: number, size: number, frameCount = 1) {
+    let scale = size > 0
+        ? Math.min(size, MAX_SIDE) / Math.max(width, height)
+        : Math.min(1, MAX_SIDE / Math.max(width, height));
+
+    const pixels = width * height * scale * scale * frameCount;
+    if (pixels > PIXEL_BUDGET) scale *= Math.sqrt(PIXEL_BUDGET / pixels);
+
     return {
         width: Math.max(1, Math.round(width * scale)),
         height: Math.max(1, Math.round(height * scale))

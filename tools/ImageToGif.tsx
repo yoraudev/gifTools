@@ -15,7 +15,7 @@ import { closeSource, fitSize, loadSource, Source } from "../lib/decode";
 import { EffectId, EFFECTS } from "../lib/effects";
 import { GifSpec } from "../lib/encode";
 import { settings } from "../settings";
-import { cl, errorMessage, gifFileName, ToolProps } from "../utils";
+import { cl, errorMessage, gifFileName, sizeLabel, ToolProps } from "../utils";
 
 const EFFECT_NAMES = Object.fromEntries(
     Object.entries(EFFECTS).map(([id, effect]) => [id, effect.name])
@@ -35,7 +35,7 @@ export function defaultOptions(): Options {
     return {
         effect: "none",
         captions: { top: "", bottom: "" },
-        size: settings.store.defaultSize,
+        size: settings.store.gifSize,
         frames: 20,
         delay: Math.max(20, settings.store.defaultDelay),
         speed: 1,
@@ -44,10 +44,10 @@ export function defaultOptions(): Options {
 }
 
 export function buildSpec(source: Source, { effect, captions, size, frames, delay, speed, reverse }: Options): GifSpec {
-    const { width, height } = fitSize(source.width, source.height, size);
     const frameCount = source.animated
         ? source.frames.length
         : effect === "none" ? 1 : frames;
+    const { width, height } = fitSize(source.width, source.height, size, frameCount);
     const at = (i: number) => reverse ? frameCount - 1 - i : i;
     const withCaptions = hasCaptions(captions);
 
@@ -119,7 +119,7 @@ export function ImageToGif({ onClose, initialFiles, initialEffect }: ToolProps) 
                 <TextField label="Bottom text" value={options.captions.bottom} onChange={setCaption("bottom")} />
             </div>
 
-            <Range label="Size" value={options.size} min={64} max={512} step={16} suffix="px" onChange={set("size")} />
+            <Range label="Size" value={options.size} min={0} max={1024} step={32} format={sizeLabel} onChange={set("size")} />
             {!source?.animated && options.effect !== "none" && (
                 <>
                     <Range label="Frames" value={options.frames} min={4} max={60} onChange={set("frames")} />

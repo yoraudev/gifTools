@@ -11,7 +11,7 @@ import { GifResult, useGifEncoder } from "../components/GifResult";
 import { Checkbox, MediaInput, Range } from "../components/Inputs";
 import { fitSize } from "../lib/decode";
 import { settings } from "../settings";
-import { cl, errorMessage, ToolProps } from "../utils";
+import { cl, errorMessage, sizeLabel, ToolProps } from "../utils";
 
 const FADE_STEPS = 6;
 const FADE_DELAY = 40;
@@ -35,7 +35,7 @@ export function Slideshow({ onClose, initialFiles }: ToolProps) {
     const [slides, setSlides] = useState<Slide[]>([]);
     const [hold, setHold] = useState(1000);
     const [fade, setFade] = useState(true);
-    const [size, setSize] = useState(settings.store.defaultSize);
+    const [size, setSize] = useState(settings.store.gifSize);
     const { encode, progress, output, busy } = useGifEncoder();
 
     const slidesRef = useRef(slides);
@@ -84,7 +84,7 @@ export function Slideshow({ onClose, initialFiles }: ToolProps) {
             }
         });
 
-        const { width, height } = fitSize(slides[0].bitmap.width, slides[0].bitmap.height, size);
+        const { width, height } = fitSize(slides[0].bitmap.width, slides[0].bitmap.height, size, frames.length);
         encode({
             width,
             height,
@@ -127,7 +127,7 @@ export function Slideshow({ onClose, initialFiles }: ToolProps) {
             )}
 
             <Range label="Time per slide" value={hold} min={200} max={5000} step={100} suffix="ms" onChange={setHold} />
-            <Range label="Size" value={size} min={64} max={512} step={16} suffix="px" onChange={setSize} />
+            <Range label="Size" value={size} min={0} max={1024} step={32} format={sizeLabel} onChange={setSize} />
             <Checkbox label="Fade between slides" value={fade} onChange={setFade} />
 
             <Button disabled={!slides.length || busy} onClick={create}>
